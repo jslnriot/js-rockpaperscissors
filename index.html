@@ -8,45 +8,35 @@
   <script src="https://fb.me/react-dom-0.14.2.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
 
-  <script src="bot.js"></script>
+  <script src="js/playgame.js"></script>
+  <script src="js/bot.js"></script>
 
-  <script>
-  function displayPick(myPick) {
-      document.getElementById("your-pick").innerHTML = "You selected " + myPick;
-
-      var bot = new Bot();
-      var botPick = bot.randomResult();
-
-      document.getElementById("bot-pick").innerHTML = "The Bot selected " + botPick;
-
-      decideWinner(myPick, botPick);
-  }
-
-  function decideWinner(myPick, botPick) {
-    console.log(myPick + " vs " + botPick);
-
-    if (myPick === botPick) {
-      document.getElementById("game-result").innerHTML = "TIE";
-    } else {
-      document.getElementById("game-result").innerHTML = "";
+  <style>
+    body{margin-top:30px;}
+    #description {
+      padding: 5px;
     }
-
-  }
-  </script>
+    #choices {
+      padding: 5px;
+    }
+  </style>
 </head>
 <body>
 
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-6 col-md-offset-3">
         <h1 class="page-header">Rock Paper Scissors</h1>
+        <div id="description">
+          Playing around with javascript rock paper scissors game.
+        </div>
         <div id="choices">
-          <input type="button" name="Pick" id="Rock" value="Rock" onclick="console.log(this.id); displayPick(this.id);" />
-          <input type="button" name="Pick" id="Paper" value="Paper" onClick="console.log(this.id); displayPick(this.id);" />
-          <input type="button" name="Pick" id="Scissors" value="Scissors" onClick="console.log(this.id); displayPick(this.id);" />
+          <input type="button" name="Pick" id="1" value="Rock" onclick="playGame(this.id);" />
+          <input type="button" name="Pick" id="2" value="Paper" onClick="playGame(this.id);" />
+          <input type="button" name="Pick" id="3" value="Scissors" onClick="playGame(this.id);" />
         </div>
 
-        <div id="your-pick"></div>
+        <div id="player-pick"></div>
         <div id="bot-pick"></div>
         <div id="game-result"></div>
 
