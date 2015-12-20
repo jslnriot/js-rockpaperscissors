@@ -1,0 +1,58 @@
+<html>
+<head>
+  <!-- http://facebook.github.io/react/docs/thinking-in-react.html -->
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://fb.me/react-0.14.2.js"></script>
+  <script src="https://fb.me/react-dom-0.14.2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.25/browser.min.js"></script>
+
+  <script src="bot.js"></script>
+
+  <script>
+  function displayPick(myPick) {
+      document.getElementById("your-pick").innerHTML = "You selected " + myPick;
+
+      var bot = new Bot();
+      var botPick = bot.randomResult();
+
+      document.getElementById("bot-pick").innerHTML = "The Bot selected " + botPick;
+
+      decideWinner(myPick, botPick);
+  }
+
+  function decideWinner(myPick, botPick) {
+    console.log(myPick + " vs " + botPick);
+
+    if (myPick === botPick) {
+      document.getElementById("game-result").innerHTML = "TIE";
+    } else {
+      document.getElementById("game-result").innerHTML = "";
+    }
+
+  }
+  </script>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <h1 class="page-header">Rock Paper Scissors</h1>
+        <div id="choices">
+          <input type="button" name="Pick" id="Rock" value="Rock" onclick="console.log(this.id); displayPick(this.id);" />
+          <input type="button" name="Pick" id="Paper" value="Paper" onClick="console.log(this.id); displayPick(this.id);" />
+          <input type="button" name="Pick" id="Scissors" value="Scissors" onClick="console.log(this.id); displayPick(this.id);" />
+        </div>
+
+        <div id="your-pick"></div>
+        <div id="bot-pick"></div>
+        <div id="game-result"></div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
