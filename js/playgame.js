@@ -1,5 +1,4 @@
 function playGame(playerPick) {
-  //console.log(playerPick);
     var playSelectionMap = {
       1:"Rock",
       2:"Paper",
@@ -9,8 +8,8 @@ function playGame(playerPick) {
     var bot = new Bot();
     var botPick = bot.randomResult(playSelectionMap);
     var winner = declareWinner(playerPick, botPick);
-
-    document.getElementById("game-result").innerHTML = "The winner is:  " + winner;
+    var score = trackScore(winner);
+    document.getElementById("game-result").innerHTML = "Winner:  " + winner;
 }
 
 function declareWinner(playerPick, botPick) {
@@ -25,8 +24,23 @@ function declareWinner(playerPick, botPick) {
   if (declareWinner == -1) {
     winner = "Bot";
   }
-
   return winner;
+}
+
+function trackScore(winner) {
+  console.log("Winner :" + winner);
+  if(winner === "Human") {
+    playerScore++;
+    document.getElementById("playerScore").innerHTML = "Player Score: " + playerScore;
+  }
+  if(winner === "Bot") {
+    botScore++;
+    document.getElementById("botScore").innerHTML = "Bot Score: " + botScore;
+  }
+  if(winner === "Tie") {
+    tieScore++;
+    document.getElementById("tieScore").innerHTML = "Tie Score: " + tieScore;
+  }
 }
 
 function winMatrix(playerPick, botPick) {
@@ -52,7 +66,6 @@ function winMatrix(playerPick, botPick) {
   winMatrix[3][3] = 0;
   winMatrix[3][4] = -1;
   winMatrix[3][5] = 1;
-
 
   return winMatrix[playerPick][botPick];
 }

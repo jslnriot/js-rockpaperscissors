@@ -11,6 +11,13 @@
   <script src="js/playgame.js"></script>
   <script src="js/bot.js"></script>
 
+  <script>
+    var playerScore = 0;
+    var botScore    = 0;
+    var tieScore    = 0;
+  </script>
+
+
   <style>
     body{margin-top:30px;}
     #description {
@@ -19,14 +26,29 @@
     #choices {
       padding: 5px;
     }
+    #results {
+      padding: 5px;
+    }
+    #scores {
+      padding: 5px;
+    }
+    #player-pick {
+      padding-right: 10px;
+    }
+    #bot-pick {
+      padding-right: 10px;
+    }
+    #game-result {
+      padding-right: 5px;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <h1 class="page-header">Rock Paper Scissors</h1>
+      <div class="col-md-12">
+        <h1 class="page-header"><!--Rock Paper Scissors--></h1>
         <div id="description">
           Playing around with javascript rock paper scissors game.
         </div>
@@ -36,9 +58,18 @@
           <input type="button" name="Pick" id="3" value="Scissors" onClick="playGame(this.id);" />
         </div>
 
-        <div id="player-pick"></div>
-        <div id="bot-pick"></div>
-        <div id="game-result"></div>
+        <div id="results">
+          <span id="player-pick"></span>
+          <span id="bot-pick"></span>
+          <span id="game-result"></span>
+        </div>
+
+        <div id="scores">
+          <div>Scores</div>
+          <div id="playerScore"></div>
+          <div id="botScore"></div>
+          <div id="tieScore"></div>
+        </div>
 
       </div>
     </div>
